@@ -1,9 +1,13 @@
 command M :w | :make
-cmap m M
-map t bve~
+map t bve~l
+map x d
+map m ea"bi"
+ 
 syntax enable
 syntax on
+set list
+set listchars=tab:..,trail:_,extends:>,precedes:<,nbsp:~
 set showmode
 set autoindent
-set smartindent 
+set smartindent
 set noswapfile
