@@ -13,3 +13,7 @@ set autoindent
 set smartindent
 set cindent
 set noswapfile
+
+autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+set softtabstop=4
+set expandtab
