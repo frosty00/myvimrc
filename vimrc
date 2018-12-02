@@ -1,5 +1,5 @@
 command M :w | :make
-map t bve~l
+map t lbve~l
 map x ldh
 map q lBi"Ea"
  
