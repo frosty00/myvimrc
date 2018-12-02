@@ -10,4 +10,6 @@ match trailingWhitespace /\s\+$/
 set showmode
 set shiftwidth=4
 set autoindent
+set smartindent
+set cindent
 set noswapfile
