@@ -1,13 +1,13 @@
 command M :w | :make
 map t bve~l
-map x d
-map m ea"bi"
+map x ldh
+map q lBi"Ea"
  
 syntax enable
 syntax on
-set list
-set listchars=tab:..,trail:_,extends:>,precedes:<,nbsp:~
+highlight trailingWhitespace ctermbg=darkgreen guibg=lightgreen
+match trailingWhitespace /\s\+$/
 set showmode
+set shiftwidth=4
 set autoindent
-set smartindent
 set noswapfile
