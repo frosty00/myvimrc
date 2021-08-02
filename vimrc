@@ -1,7 +1,6 @@
 command M :w | :make
-nmap t lbve~l
-nmap q lBi"Ea"
-nmap q lBi'^[Ea'^[
+nnoremap t lbve~l
+nmap X bde
 map J 5jzz
 map K 5kzz
 nmap F <C-F>zz
@@ -40,7 +39,6 @@ vnoremap r sr
 vnoremap s ss
 vnoremap t st
 vnoremap v sv
-vnoremap x sx
 vnoremap y sy
 vnoremap z sz
 vnoremap 0 s0
@@ -53,7 +51,8 @@ vnoremap 6 s6
 vnoremap 7 s7
 vnoremap 8 s8
 vnoremap 9 s9
+vnoremap x xi
 
-# better indentation
+" better indentation
 vnoremap < <gv
 vnoremap > >gv
