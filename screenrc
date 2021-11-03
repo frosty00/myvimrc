@@ -1,0 +1,3 @@
+hardstatus ignore
+escape ^Bb
+defscrollback 1000000
