@@ -56,3 +56,6 @@ vnoremap x xi
 " better indentation
 vnoremap < <gv
 vnoremap > >gv
+
+" backspace
+set backspace=2
