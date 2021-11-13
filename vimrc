@@ -59,3 +59,16 @@ vnoremap > >gv
 
 " backspace
 set backspace=2
+
+function Close()
+    let current = bufnr()
+    let end = bufnr('$')
+    while current <= end
+        let current = current + 1
+        :normal Go
+        :normal dd
+        :w
+        :bw
+    endwhile
+    :x
+endfunction
