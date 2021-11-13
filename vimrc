@@ -60,6 +60,7 @@ vnoremap > >gv
 " backspace
 set backspace=2
 
+" this function closes all open files and ensures they end with a newline
 function Close()
     let current = bufnr()
     let end = bufnr('$')
