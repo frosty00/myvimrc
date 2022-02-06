@@ -19,9 +19,9 @@ set smartindent
 set cindent
 set noswapfile
 
-autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
-set softtabstop=4
 set expandtab
+autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+autocmd FileType c set tabstop=2 shiftwidth=2
 
 
 " typing keys in visual mode overwrites the buffer
