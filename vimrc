@@ -1,28 +1,40 @@
+set nocompatible
+
 command M :w | :make
 nnoremap t lbve~l
 nmap X bde
-map J 5jzz
-map K 5kzz
+nmap J 5jzz
+vnoremap J 5jzz
+nmap K 5kzz
+vnoremap K 5kzz
 nmap F <C-F>zz
 nmap Q <C-B>zz
 nmap  o<Esc>
 map G G$
+map £ ^
+
+" store history of past sessions
+set undofile 
 
 syntax enable
 syntax on
 highlight trailingWhitespace ctermbg=darkgreen guibg=lightgreen
 match trailingWhitespace /\s\+$/
+
 set showmode
 set shiftwidth=4
+set tabstop=4
+set softtabstop=4
 set autoindent
 set smartindent
 set cindent
 set noswapfile
-
+set mouse=a
 set expandtab
+set fileformat=unix
+
 autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
 autocmd FileType c set tabstop=2 shiftwidth=2
-
 
 " typing keys in visual mode overwrites the buffer
 vnoremap a sa
@@ -60,20 +72,6 @@ vnoremap > >gv
 " backspace
 set backspace=2
 
-" this function closes all open files and ensures they end with a newline
-function Close()
-    let current = bufnr()
-    let end = bufnr('$')
-    while current <= end
-        let current = current + 1
-        :normal Go
-        :normal dd
-        :w
-        :bw
-    endwhile
-    :x
-endfunction
-
 augroup vimrcEx
 au!
 
@@ -84,5 +82,6 @@ autocmd BufReadPost *
 \ if line("'\"") >= 1 && line("'\"") <= line("$") |
 \   exe "normal! g`\"" |
 \ endif
+
 
 augroup END
