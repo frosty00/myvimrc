@@ -2,3 +2,9 @@ startup_message off
 hardstatus ignore
 escape ^Bb
 defscrollback 1000000
+shell bash
+
+bindkey J eval "copy" "stuff 10j"
+bindkey -m J stuff 10j
+bindkey K eval "copy" "stuff 10k"
+bindkey -m K stuff 10k
