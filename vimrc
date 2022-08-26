@@ -51,7 +51,6 @@ vnoremap r sr
 vnoremap s ss
 vnoremap t st
 vnoremap v sv
-vnoremap y sy
 vnoremap z sz
 vnoremap 0 s0
 vnoremap 1 s1
