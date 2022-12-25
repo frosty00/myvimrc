@@ -27,7 +27,6 @@ set tabstop=4
 set softtabstop=4
 set autoindent
 set smartindent
-set cindent
 set noswapfile
 set mouse=a
 set expandtab
