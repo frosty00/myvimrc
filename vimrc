@@ -35,7 +35,7 @@ set fileformat=unix
 
 autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
 autocmd FileType c set tabstop=2 shiftwidth=2
-autocmd FileType bash set tabstop=2 shiftwidth=2
+autocmd FileType sh set tabstop=2 shiftwidth=2
 
 " typing keys in visual mode overwrites the buffer
 vnoremap a sa
