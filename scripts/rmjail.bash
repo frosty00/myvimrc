@@ -11,7 +11,9 @@ if ! [ -d /jail/$jail ]; then
   exit 2
 fi
 
+#service jail stop $jail
 sed -i '' "/$jail/d" /etc/fstab
 umount /jail/$jail
 rmdir /jail/$jail
 rm /jail/fstab/$jail
+
