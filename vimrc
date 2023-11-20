@@ -12,6 +12,8 @@ nmap Q <C-B>zz
 nmap  o<Esc>
 map G G$
 map £ ^
+nnoremap r q
+nmap q bi"ea"
 
 " store history of past sessions
 set undofile 
@@ -38,16 +40,13 @@ autocmd FileType c,sh set tabstop=2 shiftwidth=2 softtabstop=2
 " typing keys in visual mode overwrites the buffer
 vnoremap a sa
 vnoremap c sc
-vnoremap e se
 vnoremap f sf
 vnoremap g sg
 vnoremap m sm
 vnoremap n sn
 vnoremap o so
-vnoremap p sp
 vnoremap q sq
 vnoremap r sr
-vnoremap s ss
 vnoremap t st
 vnoremap v sv
 vnoremap z sz
