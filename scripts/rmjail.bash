@@ -17,3 +17,6 @@ umount /jail/$jail
 rmdir /jail/$jail
 rm /jail/fstab/$jail
 
+partition=$(gpart show -l | grep " $jail " | awk '{ print $3 }')
+
+echo -e "Run:\n\ngpart delete -i $partition da0\n\nTo delete the $jail partition. Warning this action is irreversable"

@@ -7,6 +7,7 @@ fi
 
 if ! gpart show -l da0 | grep -q clone; then
   echo "clone not ready" 1>&2
+  if [ -f /home/clone.lock ]; then exit 4; fi
   new_device=$(gpart add -l clone -s 10g -t freebsd-ufs -a 4k da0 | cut -d' ' -f1)
   lockf /home/clone.lock dd if=/dev/gpt/base of=/dev/$new_device bs=4m &
   exit 3

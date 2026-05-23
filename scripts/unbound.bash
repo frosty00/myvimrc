@@ -30,17 +30,23 @@ i=2
 for jail in $jails host; do
   new_epair="local_${jail}_a"
   new_jail_epair="local_${jail}_b"
+  if _unbound ifconfig $new_jail_epair > /dev/null 2>&1; then
+    _unbound ifconfig $new_jail_epair destroy || _quit "failed to destroy epair that detached from jail $jail"
+  fi
   if ! _unbound ifconfig $new_epair > /dev/null 2>&1; then
     name=$(_unbound ifconfig epair create) || _quit "failed to create epair for $new_epair"
     new_name=$(_unbound ifconfig $name name $new_epair up) || _quit "failed to rename $new_epair"
-    _unbound ifconfig "${name%a}b" name $new_jail_epair || "failed to rename second part of $name"
+    _unbound ifconfig "${name%a}b" name $new_jail_epair || _quit "failed to rename second part of $name"
+    _unbound ifconfig $new_epair -rxcsum -txcsum -rxcsum6 -txcsum6 -tso -lro || _quit "failed to add options for firewall on $new_epair"
     _unbound ifconfig localswitch addm $new_name private $new_name || _quit "failed to add $new_name to localswitch bridge"
 
     ifconfig $new_jail_epair -vnet unbound || _quit "failed to attach the epair to the host"
-    local_ip="192.168.0.$i"
-    ((i++))
+    jid=$(jls -j $jail | sed '1d' | awk '{ print $1 }')
+    subnet=$((jid % 256))
+    top_subnet=$((jid / 256))
+    local_ip="192.168.$top_subnet.$subnet/16"
     if [ $jail = host ]; then
-      ifconfig $new_jail_epair inet $local_ip up || _quit "failed to bring up the epair on the host"
+      ifconfig $new_jail_epair inet $local_ip -rxcsum -txcsum -rxcsum6 -txcsum6 -tso -lro up || _quit "failed to bring up the epair on the host"
     else
       # attach the jail epair to the jail's vnet
       ifconfig $new_jail_epair vnet $jail || _quit "failed to attach the epair to the jail $jail"
@@ -57,4 +63,4 @@ if ! _unbound ifconfig endpoint_a > /dev/null 2>&1; then
 fi
 
 _unbound ifconfig endpoint_b inet 192.168.0.1/16 || _quit "failed to assign the endpoint an ip address"
-_unbound service local_unbound onestart
+_unbound service local_unbound onestart || true
