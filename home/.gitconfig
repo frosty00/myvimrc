@@ -1,0 +1,7 @@
+[pull]
+	rebase = false
+[user]
+	name = Carlo Revelli
+	email = carlo.revelli@berkeley.edu
+[commit]
+	gpgsign = true
