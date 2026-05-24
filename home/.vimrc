@@ -16,7 +16,13 @@ nnoremap r q
 nmap q bi"ea"
 
 " store history of past sessions
-set undofile 
+if !isdirectory($HOME . '/.undo')
+    call mkdir($HOME . '/.undo', 'p', 0700)
+endif
+
+" Tell Vim to store all undo files there
+set undodir=~/.undo//
+set undofile
 
 syntax enable
 syntax on
