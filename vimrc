@@ -82,3 +82,8 @@ autocmd BufReadPost *
 
 
 augroup END
+
+" Disable terminal version and status querying to prevent random startup characters
+set t_RV=
+set t_RS=
+set t_u7=
